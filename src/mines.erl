@@ -9,7 +9,10 @@ start() ->
 start(_Type, _Args) ->
     Dispatch = [
 	%% {Host, [{Path, Handler, Opts}]}
-	{'_', [{'_', mines_web_handler, []}]}
+	{'_', [
+	    {<<"websocket">>, mines_websocket_handler, []},
+	    {'_', mines_web_handler, []}
+	]}
     ],
     cowboy:start_listener(my_http_listener, 100,
 	cowboy_tcp_transport, [{port, 8080}],
