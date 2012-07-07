@@ -1,6 +1,12 @@
+
 div .cell{
-border:1px;
+border:1px solid black;
 width: 20px;
-height: 20 px;
+height: 20px;
+clear: none;
+display: table-cell;
+
+}
+div .row{
 
 }
