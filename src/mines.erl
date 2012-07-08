@@ -7,7 +7,10 @@ start() ->
     application:start(compiler),
     application:start(syntax_tools),
     application:start(lager),
-    application:start(mnesia),
+    lager:set_loglevel(lager_console_backend, debug),
+    %application:start(mnesia),
+    application:start(gproc),
+    application:start(jsx),
     application:start(mines).
 
 start(_Type, _Args) ->
@@ -42,7 +45,6 @@ start(_Type, _Args) ->
     mines_sup:start_link().
     
 stop(_State) ->
-    application:stop(mnesia),
-    
+    %application:stop(mnesia),
     ok.
     
