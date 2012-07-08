@@ -4,7 +4,7 @@
      {modules, [
         mines, mines_sup, mines_web_handler, mines_websocket_handler
      ]},
-     {applications, [cowboy]},
+     {applications, [cowboy, compiler, syntax_tools, lager]},
      {mod, {mines, []}},
      {registered, [mines]}
     ]}.
