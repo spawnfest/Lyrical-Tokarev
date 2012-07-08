@@ -1,7 +1,7 @@
 var web_socket;
 $(document).ready(function() {
   web_socket = prepareSocket("ws://192.168.1.12:8080/websocket");
-  fieldFactory($('#game_field'), 10);
+  fieldFactory($('#game_field'), 10); 
 });
 
 function fieldFactory(parent_div, size){
