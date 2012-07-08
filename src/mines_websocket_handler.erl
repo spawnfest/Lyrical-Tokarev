@@ -32,7 +32,10 @@ websocket_init(_Any, Req, []) ->
 
 % Handle incoming message
 websocket_handle({text, Msg}, Req, State) ->
-    {reply, {text, << "You said: ", Msg/binary >>}, Req, State, hibernate};
+    %{reply, {text, << "You said: ", Msg/binary >>}, Req, State, hibernate};
+    [{<<"x">>, X}, {<<"y">>, Y}] = jsx:decode(Msg),
+    websocket_broadcast({click, {X, Y}}),
+    {ok, Req, State};
 websocket_handle(_Any, Req, State) ->    
     {ok, Req, State}.
 
@@ -44,7 +47,7 @@ websocket_info(_Info, Req, State) ->
     {ok, Req, State, hibernate}.
 
 websocket_broadcast(Msg) ->
-    gproc:send({p, l, ?WSBroadcast}, {self(), Msg}).
+    gproc:send({p, l, ?WSBroadcast}, Msg).
     
 websocket_terminate(_Reason, _Req, _State) ->
     ok.

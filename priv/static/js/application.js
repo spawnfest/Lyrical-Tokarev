@@ -20,8 +20,9 @@ function fieldFactory(parent_div, size) {
       img = $('<div />', { class: 'image-unknown' });
   
       img.bind('click', function() {
-        hitBlock($(this).parent().attr('xcoord'), $(this).parent().attr('ycoord'));
-        sendCommandToSocket("clicked on:" + $(this).parent().attr('xcoord') + ',' + $(this).parent().attr('ycoord') + '.');
+        var x = $(this).parent().attr('xcoord');
+        var y = $(this).parent().attr('ycoord');
+        sendCommandToSocket(JSON.stringify({ x: x, y: y }, null, 2));
       });
 
       img.appendTo(cell);
@@ -51,7 +52,7 @@ function prepareSocket(address) {
       var receivedMsg = evt.data;
       msg = $.parseJSON(receivedMsg);
       hitBlock(msg.x, msg.y);
-      showStatus("got message:" + msg);
+      //showStatus("got message:" + msg);
     };
 
     ws.onclose = function() {
