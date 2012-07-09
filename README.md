@@ -5,7 +5,7 @@ Collaborative pixelboard
 This project is our small experiment on learning Erlang during [Spawnfest 2012](http://spawnfest.com) contest.
 
 At first we wished to write massive multiplayer online... minesweeper (MMOs are trendy nowadays). But we managed only to make a multi-user pixelboard. 
-You can play with it at (http://pixels.nofate.name)[http://pixels.nofate.name] (we'll need some time to deploy it, please be patient). Or just grab it here, compile with rebar and run `./launch.sh`.
+You can play with it at http://pixels.nofate.name (we'll need some time to deploy it, please be patient). Or just grab it here, compile with rebar and run `./launch.sh`.
 
 Things we learned in these 2 days:
 
